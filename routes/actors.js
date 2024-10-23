@@ -1,26 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const controller = require('../controllers/actors');
-//Debemos de extraer el archivo de controllers a nuestra ruta de directors, '..' nos sirve para bajar a la carpeta raiz
-//  de ahi damos la ruta de controllers/directors, en donde esta nuestro archivo controlador de directors
 
-/* POST create director. */
+
+/* POST create actor. */
 router.post('/',controller.create);
 
 
-/* GET directors listing. */
+/* GET actors listing. */
 router.get('/',controller.list);
 
-/* GET director where id is. */
+/* GET actor where id is. */
 router.get('/:id',controller.index);
 
-/* PUT replace specific director */
+/* PUT replace specific actor */
 router.put('/:id',controller.replace);
 
-/* PATCH update specific director */
+/* PATCH update specific actor */
 router.patch('/:id',controller.update);
 
-/* DELETE delete specific director */
+/* DELETE delete specific actor */
 router.delete('/:id',controller.destroy);
 
 module.exports = router;
