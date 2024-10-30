@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const mongoosePaginate = require('mongoose-paginate-v2')
 //Esquema define como esta en la base de datos
 const schema = mongoose.Schema({
     _name:String,
@@ -38,5 +38,6 @@ class Director {
 
 
 schema.loadClass(Director);
+schema.plugin(mongoosePaginate);
 
 module.exports = mongoose.model('Director',schema);

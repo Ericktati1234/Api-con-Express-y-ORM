@@ -9,6 +9,8 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const directorsRouter = require('./routes/directors');
 const genresRouter = require('./routes/genres');
+const moviesRouter = require('./routes/movies')
+const membersRouter = require('./routes/members')
 
 
 
@@ -46,6 +48,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/directors', directorsRouter);
 app.use('/genres', genresRouter);
+app.use('/movies', moviesRouter);
+app.use('/members', membersRouter);
 
 
 // catch 404 and forward to error handler

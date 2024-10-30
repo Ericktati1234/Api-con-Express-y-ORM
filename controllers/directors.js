@@ -33,7 +33,7 @@ function list(req, res, next) {
 
 function index(req, res, next) {
     const id = req.params.id;
-    Director.findONe({"_id":id}).then(obj => res.status(200).json({
+    Director.findOne({"_id":id}).then(obj => res.status(200).json({
         msg:'DIrectorr con el id ${id}',
         obj:obj
     })).catch(ex => res.status(500).json({
