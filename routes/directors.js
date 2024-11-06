@@ -6,7 +6,7 @@ const controller = require('../controllers/directors');
 router.post('/',controller.create);
 
 /* GET directors listing. */
-router.get('/',controller.list);
+router.get('/:page?',controller.list); //con el ? es opcional
 
 /* GET director where id is. */
 router.get('/:id',controller.index);

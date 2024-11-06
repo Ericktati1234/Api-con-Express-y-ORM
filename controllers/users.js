@@ -1,8 +1,32 @@
 const express = require('express');
+const bcrypt = require('bcrypt')
+const User = require('../models/user')
 
+async function create(req, res, next) {
+    let name = req.body.name;
+    let lastName = req.body.lastName;
+    let email = req.body.email;
+    let password = req.body.password;
 
-function create(req, res, next) {
-    res.send(`POST => /users/ => ${req.body.name} `);
+    let salt = await bcrypt.genSalt(10);
+
+    const passwordHash = await bcrypt.hash(password, salt);
+
+    let user = new User({
+        name: name,
+        lastName: lastName,
+        email: email,
+        password: passwordHash,
+        salt: salt
+    })
+
+    user.save().then(obj => res.status(200).json({
+        msg: 'Usuario almacenado corectamente',
+        obj: obj
+    })).catch(ex => res.status(500).json({
+        msg: 'No se pudo alamacenar el usuario',
+        obj: ex
+    }))
 }
 
 function list(req, res, next) {
@@ -25,9 +49,5 @@ function destroy(req, res, next) {
     res.send(`DELETE => /users/:id`);
 }
 
-//Para cada uno de los metodos del protocolo http creamos una funcion en funcion del modelo restful
-//  dicha funcion, tiene dentro un send, que envia el metodo del protocolo, con la ruta que requiere
-
 module.exports = {create,list,index,replace,update,destroy};
 
-//Por ultimo exportamos todas dichas funciones
