@@ -28,7 +28,7 @@ function login(req, res, next){
                 }
                 else{
                     res.status(403).json({
-                        msg: "llego hasta aqui" ,
+                        msg: "Usuario y/o contrasena incorrectos" ,
                         obj: null
                     });
                 }
@@ -46,12 +46,7 @@ function login(req, res, next){
                 obj: null
             });
         }
-    }).catch(/*err => {
-        res.status(500).json({
-            msg: "Error en el servidor",
-            obj: err
-    });
-}*/);
+    }).catch();
 }
 
 module.exports = {home, login};
