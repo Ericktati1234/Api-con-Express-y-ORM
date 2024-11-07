@@ -3,21 +3,21 @@ const router = express.Router();
 const controller = require('../controllers/directors');
 
 /* POST create director. */
-router.post('/',controller.create);
+router.post('/', controller.create);
 
 /* GET directors listing. */
-router.get('/:page?',controller.list); //con el ? es opcional
+router.get('/:page?', controller.list);
 
-/* GET director where id is. */
-router.get('/:id',controller.index);
+/* GET director by id. */
+router.get('/:id', controller.index);
 
-/* PUT replace specific director */
-router.put('/:id',controller.replace);
+/* PUT replace director by id. */
+router.put('/:id', controller.replace);
 
-/* PATCH update specific director */
-router.patch('/:id',controller.update);
+/* PATCH update director by id. */
+router.patch('/:id', controller.update);
 
-/* DELETE delete specific director */
-router.delete('/:id',controller.destroy);
+/* DELETE director by id. */
+router.delete('/:id', controller.destroy);
 
 module.exports = router;
