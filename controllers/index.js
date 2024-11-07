@@ -16,12 +16,7 @@ function login(req, res, next){
     User.findOne({"_email":email}).then(user => {
         if(user){
             bcrypt.hash(password, user.salt, (err, hash)=>{
-                if(err){
-                    res.status(403).json({
-                        msg: "Usuario y/o contrasena incorrectos",
-                        obj: null
-                    });
-                }
+                
                 if(hash === user.password){
                     res.status(200).json({
                         msg: "Sesion iniciada correctamente",
@@ -30,7 +25,14 @@ function login(req, res, next){
                             exp: Math.floor(Date.now() / 1000) + 180
                         }, jwtKey) 
                     });
-                }else{
+                }
+                else{
+                    res.status(403).json({
+                        msg: "llego hasta aqui" ,
+                        obj: null
+                    });
+                }
+                if(err){
                     res.status(403).json({
                         msg: "Usuario y/o contrasena incorrectos",
                         obj: null

@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const { expressJwt, expressjwt } = require('express-jwt');
+const { expressjwt } = require('express-jwt');
 
 const jwtKey = "aedase423laoie323deijde402";
 

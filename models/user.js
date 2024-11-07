@@ -1,21 +1,20 @@
-const { default: mongoose } = require('mongoose');
-const moongose = require('mongoose');
+const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     _name:String,
     _lastName:String,
     _email:String,
     _password: String,
-    _slt: String
+    _salt: String
 })
 
 class User {
-    constructor(name, lastName, password, salt){
+    constructor(name, lastName,email, password, salt){
         this._name = name;
         this._lastName = lastName;
         this._email = email;
         this._password = password;
-        this._slt = salt;
+        this._salt = salt;
     }
 
     get name(){
@@ -50,12 +49,12 @@ class User {
         this._password = v;
     }
 
-    get slt(){
-        return this._slt;
+    get salt(){
+        return this._salt;
     }
 
-    set slt(v){
-        this._slt = v;
+    set salt(v){
+        this._salt = v;
     }
 }
 schema.loadClass(User);
